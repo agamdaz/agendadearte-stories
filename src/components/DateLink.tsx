@@ -6,7 +6,6 @@ const dateLinkContainer = style({
     marginBottom: "8px",
     padding: "8px 10px",
     color: "#333",
-    textDecoration: "none",
     fontFamily: "Rubik, sans-serif",
     border: "1px solid slategrey",
     borderRadius: "2px",
@@ -63,15 +62,15 @@ interface DateLinkProps {
 
 export const DateLink: FunctionComponent<DateLinkProps> = (props) => {
     const {author, title, images, initialDate, finalDate, entranceValue} = props;
-    // href is passed by Next Link
-    // eslint-disable-next-line jsx-a11y/anchor-is-valid, jsx-a11y/anchor-has-content
-    return <a className={dateLinkContainer}>
-        <h1 className={dateLinkAuthor}>{author}</h1>
-        <h2 className={dateLinkTitle}>{title}</h2>
-        {!!images.length && <img className={dateLinkImage} src={images[0]} alt=""/>}
-        <div className={dateLinkDetails}>
-            <p>Del {initialDate} al {finalDate}</p>
-            <p>{entranceValue}</p>
-        </div>
-    </a>
+    return (
+        <article className={dateLinkContainer}>
+            <h1 className={dateLinkAuthor}>{author}</h1>
+            <h2 className={dateLinkTitle}>{title}</h2>
+            {!!images.length && <img className={dateLinkImage} src={images[0]} alt=""/>}
+            <div className={dateLinkDetails}>
+                <p>Del {initialDate} al {finalDate}</p>
+                <p>{entranceValue}</p>
+            </div>
+        </article>
+    )
 };
