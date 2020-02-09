@@ -1,7 +1,8 @@
 import React, {FunctionComponent} from "react"
 import {style} from "typestyle";
+import {authorCss, titleCss} from "./css";
 
-const dateLinkContainer = style({
+const dateCardContainer = style({
     display: "block",
     marginBottom: "8px",
     padding: "8px 10px",
@@ -19,29 +20,11 @@ const dateLinkContainer = style({
     }
 });
 
-const dateLinkAuthor = style({
-    margin: "0px",
-    marginBottom: "4px",
-    paddingBottom: "4px",
-    color: "black",
-    fontFamily: "Roboto Slab, serif",
-    fontSize: "large",
-    fontWeight: 400
-});
-
-const dateLinkTitle = style({
-    margin: "0px 0px 4px",
-    paddingBottom: "4px",
-    color: "slategrey",
-    fontSize: "medium",
-    fontWeight: 300
-});
-
-const dateLinkImage = style({
+const dateCardImage = style({
     width: "100%"
 });
 
-const dateLinkDetails = style({
+const dateCardDetails = style({
     marginTop: "4px",
     $nest: {
         p: {
@@ -51,7 +34,7 @@ const dateLinkDetails = style({
     }
 });
 
-interface DateLinkProps {
+interface DateCardProps {
     author: string,
     title: string,
     images: Array<string>,
@@ -60,14 +43,14 @@ interface DateLinkProps {
     entranceValue: string
 }
 
-export const DateLink: FunctionComponent<DateLinkProps> = (props) => {
+export const DateCard: FunctionComponent<DateCardProps> = (props) => {
     const {author, title, images, initialDate, finalDate, entranceValue} = props;
     return (
-        <article className={dateLinkContainer}>
-            <h1 className={dateLinkAuthor}>{author}</h1>
-            <h2 className={dateLinkTitle}>{title}</h2>
-            {!!images.length && <img className={dateLinkImage} src={images[0]} alt=""/>}
-            <div className={dateLinkDetails}>
+        <article className={dateCardContainer}>
+            <h1 className={authorCss}>{author}</h1>
+            <h2 className={titleCss}>{title}</h2>
+            {!!images.length && <img className={dateCardImage} src={images[0]} alt=""/>}
+            <div className={dateCardDetails}>
                 <p>Del {initialDate} al {finalDate}</p>
                 <p>{entranceValue}</p>
             </div>
