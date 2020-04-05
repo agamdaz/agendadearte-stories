@@ -1,3 +1,3 @@
 module.exports = {
-  addons: ['@storybook/addon-viewport/register'],
+  addons: ['@storybook/preset-create-react-app', '@storybook/addon-viewport/register']
 };
