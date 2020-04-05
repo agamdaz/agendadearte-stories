@@ -1,6 +1,6 @@
 import React from "react";
 import {storiesOf} from "@storybook/react";
-import {DateCard} from "./DateCard";
+import {DateCard} from "../components/DateCard";
 import {style} from "typestyle";
 import {oteiza} from "../data/oteiza";
 

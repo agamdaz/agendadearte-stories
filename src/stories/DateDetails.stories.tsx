@@ -1,6 +1,6 @@
 import React from "react";
 import {storiesOf} from "@storybook/react";
-import {DateDetails} from "./DateDetails";
+import {DateDetails} from "../components/DateDetails";
 import {oteiza} from "../data/oteiza";
 
 storiesOf("Date Details", module).add("default", () => {
