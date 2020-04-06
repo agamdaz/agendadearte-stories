@@ -13,6 +13,6 @@ storiesOf("Date Card", module).add("default", () => (
             initialDate={oteiza.initialDate}
             finalDate={oteiza.finalDate}
             entranceValue={oteiza.entranceValue}/>
-        </div>
+    </div>
     )
 );

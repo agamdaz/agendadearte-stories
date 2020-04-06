@@ -1,13 +1,11 @@
 import React, {FunctionComponent} from "react"
 import {style} from "typestyle";
-import {authorCss, titleCss} from "./css";
+import {bodyCss, authorCss, titleCss} from "./css";
 
 const dateCardContainer = style({
     display: "block",
     marginBottom: "8px",
     padding: "8px 10px",
-    color: "#333",
-    fontFamily: "Rubik, sans-serif",
     border: "1px solid slategrey",
     borderRadius: "2px",
     transition: "border 0.2s ease, box-shadow 0.2s ease",
@@ -46,14 +44,16 @@ interface DateCardProps {
 export const DateCard: FunctionComponent<DateCardProps> = (props) => {
     const {author, title, images, initialDate, finalDate, entranceValue} = props;
     return (
-        <article className={dateCardContainer}>
-            <h1 className={authorCss}>{author}</h1>
-            <h2 className={titleCss}>{title}</h2>
-            {!!images.length && <img className={dateCardImage} src={images[0]} alt=""/>}
-            <div className={dateCardDetails}>
-                <p>Del {initialDate} al {finalDate}</p>
-                <p>{entranceValue}</p>
-            </div>
-        </article>
+        <div className={bodyCss}>
+            <article className={dateCardContainer}>
+                <h1 className={authorCss}>{author}</h1>
+                <h2 className={titleCss}>{title}</h2>
+                {!!images.length && <img className={dateCardImage} src={images[0]} alt=""/>}
+                <div className={dateCardDetails}>
+                    <p>Del {initialDate} al {finalDate}</p>
+                    <p>{entranceValue}</p>
+                </div>
+            </article>
+        </div>
     )
 };

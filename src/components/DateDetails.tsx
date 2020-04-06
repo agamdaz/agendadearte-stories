@@ -1,30 +1,37 @@
 import React, {FunctionComponent} from "react"
 import {media, style} from "typestyle";
-import {authorCss, titleCss} from "./css";
+import {bodyCss, authorCss, titleCss} from "./css";
 
-const containerCss = style({
+const descriptionContainer = style({
     display: "flex",
-    color: "#333",
-    fontFamily: "Rubik, sans-serif",
+    flexWrap: "wrap",
 },
-    getMobileCSS({
-        flexWrap: "wrap"
-    })
+    media({minWidth: 641}, {
+        flexDirection: "row-reverse",
+        flexWrap: "nowrap",
+    }),
 );
 
-const sectionCss = style({
+const headerCss = style({
+    marginBlockEnd: "1em",
+    borderBottom: "1px solid darkslategrey",
+});
+
+const eventDescription = style({
+    width: "100%",
     flexGrow: 1,
-    paddingInlineEnd: "1em"
+    flexShrink: 0,
 },
-    getMobileCSS({
-        width: "100%",
-        paddingInlineEnd: 0
+    media({minWidth: 641}, {
+        width: "50%",
+    }),
+    media({minWidth: 981}, {
+        width: "60%",
     })
 );
 
-const asideCss = style({
-    flexShrink: 0,
-    marginBlockStart: "1em",
+const locationDetails = style({
+    marginBlockEnd: "1em",
     paddingBlockStart: "1em",
     paddingBlockEnd: "1em",
     backgroundColor: "#f0f0f0",
@@ -32,29 +39,23 @@ const asideCss = style({
         p: {
             margin: 0,
             paddingInlineStart: "1em",
-            paddingInlineEnd: "1em"
+            paddingInlineEnd: "1em",
+        }
+    }
+});
+
+const eventGallery = style({
+    marginBlockEnd: "1em",
+    $nest: {
+        img: {
+            width: "100%",
         }
     }
 },
-    getMobileCSS({
-        width: "100%"
+    media({minWidth: 641}, {
+        marginInlineStart: "1em",
     })
 );
-
-const headerCss = style({
-    marginBlockEnd: "1em",
-    borderBottom: "1px solid darkslategrey"
-});
-
-const imageCss = style({
-    display: "block",
-    width: "100%",
-    marginBlockStart: "1em"
-});
-
-function getMobileCSS(props: object) {
-    return media({maxWidth: 640}, props);
-}
 
 interface DateDetailsProps {
     author: string,
@@ -64,27 +65,33 @@ interface DateDetailsProps {
     finalDate: string,
     description: string,
     location: {name: string, address: string},
-    entranceValue: string
+    entranceValue: string,
 }
 
 export const DateDetails: FunctionComponent<DateDetailsProps> = (props) => {
     const {author, title, images, initialDate, finalDate, description, location, entranceValue} = props;
     return (
-        <article className={containerCss}>
-            <section className={sectionCss}>
+        <div className={bodyCss}>
+            <article>
                 <header className={headerCss}>
                     <h1 className={authorCss}>{author}</h1>
                     <h2 className={titleCss}>{title}</h2>
                 </header>
-                <p>{description.replace(/<[/]?[pb]>/g, '')}</p>
-                {images.length && <img className={imageCss} src={images[0]} alt=""/>}
-            </section>
-            <aside className={asideCss}>
-                <p>Del {initialDate} al {finalDate}</p>
-                <p>{entranceValue}</p>
-                <p>{location && location.name}</p>
-                <p>{location && location.address}</p>
-            </aside>
-        </article>
+                <div className={descriptionContainer}>
+                    <aside className={eventGallery}>
+                        {images.length && <img src={images[0]} alt=""/>}
+                    </aside>
+                    <section className={eventDescription}>
+                        <header className={locationDetails}>
+                            <p>{location && location.name}</p>
+                            <p>{location && location.address}</p>
+                            <p>Del {initialDate} al {finalDate}</p>
+                            <p>{entranceValue}</p>
+                        </header>
+                        <article>{description.replace(/<[/]?[pb]>/g, '')}</article>
+                    </section>
+                </div>
+            </article>
+        </div>
     )
 };

@@ -1,5 +1,10 @@
 import {style} from "typestyle";
 
+export const bodyCss = style({
+    color: "#333",
+    fontFamily: "Rubik, sans-serif",
+});
+
 export const authorCss = style({
     margin: 0,
     marginBottom: "0.5em",
