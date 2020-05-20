@@ -37,10 +37,26 @@ const locationDetails = style({
     backgroundColor: "#f0f0f0",
     $nest: {
         p: {
-            margin: 0,
-            paddingInlineStart: "1em",
+            position: "relative",
+            margin: "0 0 .5em 1em",
+            paddingInlineStart: "2.25em",
             paddingInlineEnd: "1em",
-        }
+            $nest: {
+                "&:last-child": {
+                    marginBlockEnd: 0,
+                }
+            }
+        },
+        i: {
+            position: "absolute",
+            top: "-.12em",
+            left: 0,
+            $nest: {
+                "&.place": {
+                    top: 0,
+                }
+            }
+        },
     }
 });
 
@@ -64,12 +80,15 @@ interface DateDetailsProps {
     initialDate: string,
     finalDate: string,
     description: string,
-    location: {name: string, address: string},
+    location: {
+        name: string,
+        address: string,
+        link: {href: string, label: string}},
     entranceValue: string,
 }
 
 export const DateDetails: FunctionComponent<DateDetailsProps> = (props) => {
-    const {author, title, images, initialDate, finalDate, description, location, entranceValue} = props;
+    const {author, title, images, initialDate, finalDate, description, location} = props;
     return (
         <div className={bodyCss}>
             <article>
@@ -83,10 +102,9 @@ export const DateDetails: FunctionComponent<DateDetailsProps> = (props) => {
                     </aside>
                     <section className={eventDescription}>
                         <header className={locationDetails}>
-                            <p>{location && location.name}</p>
-                            <p>{location && location.address}</p>
-                            <p>Del {initialDate} al {finalDate}</p>
-                            <p>{entranceValue}</p>
+                            <p><i className="material-icons-outlined place">place</i> {location && location.name}<br/><small>{location && location.address}</small></p>
+                            <p><i className="material-icons-outlined">date_range</i> Del {initialDate} al {finalDate}</p>
+                            <p><i className="material-icons-outlined">web</i> <a href={location && location.link.href} target="_blank">{location.link.label}</a></p>
                         </header>
                         <article>{description.replace(/<[/]?[pb]>/g, '')}</article>
                     </section>

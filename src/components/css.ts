@@ -3,6 +3,11 @@ import {style} from "typestyle";
 export const bodyCss = style({
     color: "#333",
     fontFamily: "Rubik, sans-serif",
+    $nest: {
+        a: {
+            color: "#333"
+        },
+    }
 });
 
 export const authorCss = style({

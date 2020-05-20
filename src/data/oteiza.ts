@@ -8,6 +8,10 @@ export const oteiza = {
         "Con la experimentación heredada del constructivismo, Oteiza se embarca en lo que denomina su Propósito Experimental (1955), título con el que se presenta en la Bienal de São Paulo (1957), donde obtiene el premio extraordinario de escultura.",
     initialDate: "9 de abril",
     finalDate: "21 de octubre",
-    location: {name: "Museo Nacional Centro de Arte Reina Sofía", address: "Calle de Santa Isabel, 52 - 28012 Madrid"},
+    location: {
+        name: "Museo Nacional Centro de Arte Reina Sofía",
+        address: "Calle de Santa Isabel, 52 - 28012 Madrid",
+        link: {label: "Fundación-Museo Jorge Oteiza", href: "https://www.museooteiza.org"}
+    },
     entranceValue: "Consultar precios"
 };
