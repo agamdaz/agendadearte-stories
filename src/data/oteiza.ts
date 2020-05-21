@@ -11,7 +11,9 @@ export const oteiza = {
     location: {
         name: "Museo Nacional Centro de Arte Reina Sofía",
         address: "Calle de Santa Isabel, 52 - 28012 Madrid",
-        link: {label: "Fundación-Museo Jorge Oteiza", href: "https://www.museooteiza.org"}
-    },
-    entranceValue: "Consultar precios"
+        link: {
+            label: "Fundación-Museo Jorge Oteiza",
+            href: "https://www.museooteiza.org"
+        }
+    }
 };
